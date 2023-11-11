@@ -1,7 +1,7 @@
 # CSE_2102_lab5
 firstly, you will have to clone the git repo
 
-`git clone https://github.com/AdrianG0954/cse2102-Lab5.git`
+`git clone https://github.com/JonathanJJ4/CSE_2102_lab5.git`
 
 After cloning the git repo, change directory into the appropriate file
 
