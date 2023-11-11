@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(username)) {
+                alert("Invalid email address");
+                return false;
+            }
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters");
+                return false;
+            }
+
+            var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
+            if (!passwordPattern.test(password)) {
+                alert("Password must contain at least one uppercase letter, one lowercase letter, and one digit");
+                return false;
+            }
+
+            var entropy = password.length * Math.log(94) / Math.log(2);
+            if (entropy < 40) {
+                alert("Password must have sufficient entropy");
+                return false;
+            }
+
+            if (password.toLowerCase().includes(username.toLowerCase())) {
+                alert("Password cannot contain the username");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Login Page</h1>
+    </div>
+
+    <form style="margin: auto; max-width: 300px;" action="/proxy/8093/not_home" method="post" onsubmit="return validateForm();">
+        <label style="text-align: left;" for="username">Enter email:</label>
+        <input style="width: 100%;" type="text" id="username" name="username" placeholder="Enter email here" required/><br /><br />
+
+        <label style="text-align: left;" for="password">Enterassword:</label>
+        <input style="width: 100%;" type="password" id="password" name="password" placeholder="Enter password here" required/><br /><br />
+
+        <input style="width: 100%;" type="submit" value="Log In" />
+    </form>
+</body>
+</html>
